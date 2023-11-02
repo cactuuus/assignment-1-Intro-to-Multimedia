@@ -1,38 +1,365 @@
-.App {
+/* ===================================================================== 
+Custom properties 
+===================================================================== */
+
+/* color schemes for themes */
+:root[data-theme="light"] {
+  --primary: #dfe7f7;
+  --secondary: rgb(86, 179, 102);
+  --ternary: lightgray;
+
+  --text: black;
+  --shadow: grey;
+  --inverse: #313131;
+}
+
+:root[data-theme="dark"] {
+  --primary: #313131;
+  --secondary: rgb(59, 107, 67);
+  --ternary: rgb(105, 105, 105);
+
+  --text: white;
+  --shadow: black;
+  --inverse: #dfe7f7;
+}
+
+:root {
+  --theme-icons: rgb(252, 224, 70);
+  --current-page: rgba(240, 128, 128, 0.863);
+  --hover-link: lightcoral;
+  --hover-link-shadow: coral;
+
+  --header-height: 116px;
+  --footer-height: 80px;
+}
+
+/* ===================================================================== 
+Global 
+===================================================================== */
+
+* {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+h1 {
   text-align: center;
+  filter: drop-shadow(3px 1px 2px var(--shadow));
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:where(h2, h3, h4) {
+  margin-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+hr {
+  margin: 10px 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+figcaption {
+  font-style: italic;
+}
+
+body {
+  background-color: var(--primary);
+  color: var(--text);
+}
+
+#root {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  max-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+.container {
+  width: 90%;
+  min-width: 750px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+main {
+  box-sizing: border-box;
+  padding: 40px 0;
+  min-height: 650px;
+  flex: 1;
+}
+
+/* ===================================================================== 
+Header
+===================================================================== */
+header {
+  padding: 20px 0 0 0;
+  background-color: var(--secondary);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.link.active {
+  background-color: var(--current-page);
+}
+
+.link {
+  padding: 5px 25px;
+  border-radius: 5px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.link:hover {
+  background-color: var(--hover-link);
+  box-shadow: 0 0 10px var(--hover-link-shadow);
+}
+
+/* ---------------------------------------------------------------------
+Theme toggle switch
+--------------------------------------------------------------------- */
+#theme-toggle {
+  --width: 50px;
+  --height: 22px;
+  --border-rad: 50px;
+  margin-right: 5px;
+  float: right;
+}
+
+#theme-toggle .slider {
+  position: relative;
+  cursor: pointer;
+  height: var(--height);
+  width: var(--width);
+  border: 2px solid var(--secondary);
+  border-radius: var(--border-rad);
+  outline: 1px solid var(--inverse);
+  transition: box-shadow 0.2s;
+}
+
+#theme-toggle .slider:hover {
+  box-shadow: 0 0 10px var(--hover-link-shadow);
+}
+
+.slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: var(--height);
+  width: var(--height);
+  border-radius: var(--border-rad);
+  background-color: var(--inverse);
+  transition: all 0.2s;
+}
+
+#theme-selector:checked ~ .slider::after {
+  transform: translateX(calc(var(--height) - var(--width)));
+}
+
+.slider svg {
+  position: absolute;
+  margin: 2px;
+  height: calc(var(--height) - 4px);
+  fill: var(--theme-icons);
+}
+
+.slider .sun {
+  left: 1px;
+}
+
+.slider .moon {
+  right: 3px;
+}
+
+/* =====================================================================
+Footer
+===================================================================== */
+
+footer {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  min-height: 80px;
+  text-align: center;
+  background-color: var(--secondary);
 }
 
-.App-link {
-  color: #61dafb;
+/* =====================================================================
+Home
+===================================================================== */
+
+.homepage {
+  display: flex;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.homepage article {
+  width: 55%;
+}
+
+.homepage aside {
+  width: 40%;
+}
+
+.homepage aside img {
+  width: 100%;
+  filter: drop-shadow(5px 2px 5px var(--shadow));
+}
+
+/* =====================================================================
+Video page
+===================================================================== */
+
+.video-container {
+  margin: auto;
+  width: 60%;
+  filter: drop-shadow(0 0 10px var(--shadow));
+}
+
+.video-container video {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* =====================================================================
+Clock page
+===================================================================== */
+
+#clock {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: auto;
+  border-radius: 30px;
+  background-color: var(--ternary);
+}
+
+#sec,
+#min,
+#hour {
+  position: absolute;
+  width: 30px;
+  height: 600px;
+  top: 0px;
+  left: 285px;
+}
+
+#sec {
+  z-index: 3;
+}
+
+#min {
+  z-index: 2;
+  transition: transform 2s;
+}
+
+#hour {
+  z-index: 1;
+  transition: transform 2s;
+}
+
+#mute-btn {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  height: 40px;
+  width: 50px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #006564;
+  border: 3px outset #006564;
+}
+
+#mute-btn svg {
+  fill: white;
+}
+
+#mute-btn.clicked {
+  box-shadow: 0 0;
+  border: 3px inset #006564;
+}
+
+/* =====================================================================
+Coursework page
+===================================================================== */
+
+#coursework-container {
+  --min-height: 400px;
+  --box-padding: 10px;
+  --box-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#coursework-container aside {
+  width: 25%;
+  border-radius: var(--box-radius);
+  padding: var(--box-padding);
+  background-color: var(--ternary);
+  min-height: var(--min-height);
+}
+
+.secondary-links {
+  padding: 5px 0;
+  list-style: none;
+  border-top: 1px solid var(--text);
+}
+
+.secondary-link {
+  display: block;
+  padding: 5px 20px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s, padding 0.2s;
+  border-radius: 5px;
+}
+
+.secondary-link::before {
+  content: "> ";
+}
+
+.secondary-link:hover {
+  padding-left: 30px;
+  background-color: var(--hover-link);
+  box-shadow: 0 0 5px var(--hover-link-shadow);
+}
+
+.secondary-link.active {
+  padding-left: 30px;
+  background-color: var(--current-page);
+}
+
+.report {
+  padding: var(--box-padding);
+  width: 65%;
+  overflow-y: scroll;
+}
+
+.report-figure {
+  max-width: 500px;
+  margin: auto;
+}
+
+.report-figure img {
+  width: 100%;
+}
+
+#placeholder {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+}
+.arrow {
+  fill: var(--secondary);
+  stroke: var(--secondary);
+  height: 50px;
+  margin-right: 30px;
 }

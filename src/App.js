@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import { getSavedTheme } from "./functions/theme-functions";
+
+import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import VideoPage from "./pages/VideoPage";
+import HobbiesPage from "./pages/HobbiesPage";
+import CourseworkPage from "./pages/CourseworkPage";
+import ClockPage from "./pages/ClockPage";
 
 function App() {
+  const savedTheme = getSavedTheme();
+  const [theme, setTheme] = useState(savedTheme);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header theme={theme} setTheme={setTheme} />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/video" element={<VideoPage />} />
+        <Route path="/hobbies" element={<HobbiesPage />} />
+        <Route path="/coursework" element={<CourseworkPage />} />
+        <Route path="/clock" element={<ClockPage />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
