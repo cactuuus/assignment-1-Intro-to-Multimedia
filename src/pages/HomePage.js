@@ -2,7 +2,7 @@ import dragonImg from "../media/images/dragon.png";
 
 const HomePage = () => {
   return (
-    <main className="container">
+    <main>
       <div className="homepage">
         <article>
           <h2>Hello and welcome!</h2>
@@ -19,9 +19,11 @@ const HomePage = () => {
             tempus sed quis dui.
           </p>
         </article>
-        <aside>
-          <img src={dragonImg} alt="origami of a dragon" />
-        </aside>
+        <img
+          className="origami-img"
+          src={dragonImg}
+          alt="origami of a dragon"
+        />
       </div>
     </main>
   );

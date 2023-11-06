@@ -7,20 +7,13 @@ import minHandImg from "../media/images/clock/minhand.png";
 import secHandImg from "../media/images/clock/sechand.png";
 
 class Clock extends Component {
+  state = { hours: "", minutes: "", seconds: "" };
+  tick = new Audio(tickSound);
+  muted = true;
   running;
-  tick;
-  muted;
-
-  constructor(props) {
-    super(props);
-    this.handleTime = this.handleTime.bind(this);
-    this.setMute = this.setMute.bind(this);
-    this.state = { hours: "", minutes: "", seconds: "" };
-    this.tick = new Audio(tickSound);
-    this.muted = true;
-  }
 
   componentDidMount() {
+    this.handleTime();
     this.running = setInterval(this.handleTime, 1000);
   }
 

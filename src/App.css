@@ -64,6 +64,11 @@ figcaption {
   font-style: italic;
 }
 
+.origami-img {
+  max-width: 40%;
+  filter: drop-shadow(5px 2px 5px var(--shadow));
+}
+
 body {
   background-color: var(--primary);
   color: var(--text);
@@ -76,7 +81,7 @@ body {
   max-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
-.container {
+:where(main, .container) {
   width: 90%;
   min-width: 750px;
   max-width: 1300px;
@@ -205,15 +210,6 @@ Home
   width: 55%;
 }
 
-.homepage aside {
-  width: 40%;
-}
-
-.homepage aside img {
-  width: 100%;
-  filter: drop-shadow(5px 2px 5px var(--shadow));
-}
-
 /* =====================================================================
 Video page
 ===================================================================== */
@@ -240,11 +236,10 @@ Clock page
   margin: auto;
   border-radius: 30px;
   background-color: var(--ternary);
+  box-shadow: 0 0 5px var(--shadow);
 }
 
-#sec,
-#min,
-#hour {
+:where(#sec, #min, #hour) {
   position: absolute;
   width: 30px;
   height: 600px;
@@ -258,12 +253,11 @@ Clock page
 
 #min {
   z-index: 2;
-  transition: transform 2s;
+  transition: transform 3s;
 }
 
 #hour {
   z-index: 1;
-  transition: transform 2s;
 }
 
 #mute-btn {
@@ -272,7 +266,7 @@ Clock page
   left: 50px;
   height: 40px;
   width: 50px;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
   background-color: #006564;
   border: 3px outset #006564;
@@ -305,6 +299,7 @@ Coursework page
   padding: var(--box-padding);
   background-color: var(--ternary);
   min-height: var(--min-height);
+  box-shadow: 0 0 5px var(--shadow);
 }
 
 .secondary-links {
@@ -357,9 +352,18 @@ Coursework page
   align-items: center;
   margin-top: 50px;
 }
+
 .arrow {
   fill: var(--secondary);
   stroke: var(--secondary);
   height: 50px;
   margin-right: 30px;
+}
+
+/* =====================================================================
+Hobbies page
+===================================================================== */
+
+.hobbies .origami-img {
+  margin: auto;
 }

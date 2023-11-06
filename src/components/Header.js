@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import ThemeSwitch from "./ThemeSwitch";
 import logoImg from "../media/images/logo.png";
 
-const Header = ({ theme, setTheme }) => {
+const Header = ({ theme, handleTheme }) => {
   return (
     <>
       <header>
@@ -30,7 +30,7 @@ const Header = ({ theme, setTheme }) => {
             <NavLink to="/clock" className="link">
               Clock
             </NavLink>
-            <ThemeSwitch theme={theme} setTheme={setTheme} />
+            <ThemeSwitch theme={theme} handleTheme={handleTheme} />
           </nav>
         </div>
       </header>

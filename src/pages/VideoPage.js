@@ -2,7 +2,7 @@ import boatVideo from "../media/videos/origami-boat.mp4";
 
 const VideoPage = () => {
   return (
-    <main className="container">
+    <main>
       <figure className="video-container">
         <video src={boatVideo} controls></video>
         <figcaption>

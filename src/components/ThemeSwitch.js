@@ -1,6 +1,4 @@
-import { switchTheme } from "../functions/theme-functions";
-
-const ThemeSwitch = ({ theme, setTheme }) => {
+const ThemeSwitch = ({ theme, handleTheme }) => {
   return (
     <>
       <label id="theme-toggle" htmlFor="theme-selector">
@@ -9,7 +7,7 @@ const ThemeSwitch = ({ theme, setTheme }) => {
           type="checkbox"
           hidden
           checked={theme === "dark"}
-          onChange={(e) => setTheme(switchTheme())}
+          onChange={(e) => handleTheme()}
         />
         <div className="slider">
           <svg className="sun" viewBox="0 0 512 512">
