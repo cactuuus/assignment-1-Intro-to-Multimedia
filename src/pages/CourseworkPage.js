@@ -1,11 +1,13 @@
-import lab2FinalImg from "../media/images/coursework/lab-2-final.jpg";
-import lab3FinalImg from "../media/images/coursework/lab-3-final.jpg";
 import { useState } from "react";
+
+import lab2FinalImg from "../media/images/coursework/lab-2-final.jpg";
+import lab3Part1Img from "../media/images/coursework/lab-3-part1.png";
+import lab3FinalImg from "../media/images/coursework/lab-3-final.jpg";
 
 const CourseworkPage = () => {
   const [currentReport, setCurrentReport] = useState("");
 
-  const reports = ["Lab 2 - HTML & CSS", "Lab 3 - Javascript"];
+  const reports = ["Lab 2 - HTML & CSS", "Lab 3 - Bootstrap & Js"];
 
   const handleReport = (e) => {
     const target = e.target.getAttribute("value");
@@ -17,13 +19,13 @@ const CourseworkPage = () => {
     <main id="coursework-container">
       <aside>
         <h3>Lab links</h3>
-        <ul className="secondary-links">
+        <ul className="coursework-links">
           {reports.map((reportName) => {
             return (
               <li
                 className={
                   (currentReport === reportName ? "active" : "") +
-                  " secondary-link"
+                  " clickable coursework-link"
                 }
                 onClick={handleReport}
                 value={reportName}
@@ -53,7 +55,7 @@ const CourseworkPage = () => {
                 </g>{" "}
               </g>
             </svg>
-            <h2>Click on a link to see its content!</h2>
+            <h3>Click on a link to see its content!</h3>
           </div>
         )}
 
@@ -61,32 +63,62 @@ const CourseworkPage = () => {
           <>
             <h3>HTML & CSS</h3>
             <p>
-              In this lab we learned about HTML and CSS. By the end, we produced
-              a webpage template, styling each section using different colors,
-              to better distinguish them.
+              In this lab we learned about HTML and CSS. We mostly focused on
+              styling &lt;div&gt; to produce a static webpage template, styling
+              each section using different colors, to better distinguish them.
+              <br />
+              Below is a screenshot of the finisheed product, or you can click{" "}
+              <a className="ext-link" href="lab-ref/lab2.html" target="_blank">
+                here
+              </a>{" "}
+              to open its HTML document it in a new page.
             </p>
-            <p>Below is the picture of the finished product.</p>
             <hr />
             <figure className="report-figure">
               <img src={lab2FinalImg} alt="template webpage"></img>
-              <figcaption>Fig. 1: The resulting webpage template</figcaption>
+              <figcaption>The resulting webpage template</figcaption>
             </figure>
           </>
         )}
 
         {currentReport === reports[1] && (
           <>
-            <h3>Javascript</h3>
+            <h3>Bootstrap</h3>
             <p>
-              In this lab we learned about HTML and CSS. By the end, we produced
-              a webpage template, styling each section using different colors,
-              to better distinguish them.
+              This lab focused on the use of libraries: Bootstrap and JQuery.
+              With them, we first created a simple webpage (available{" "}
+              <a className="ext-link" href="lab-ref/lab3.html" target="_blank">
+                here
+              </a>
+              ) which, compared to the previous lab exercise, offers a bit more
+              interactivity: It is responsive to the size of the browser's
+              window, and when under a certain width, the navbar can be
+              collapsed and expanded.
             </p>
-            <p>Below is the picture of the finished product.</p>
             <hr />
             <figure className="report-figure">
-              <img src={lab3FinalImg} alt="template webpage"></img>
-              <figcaption>Fig. 1: The resulting webpage template</figcaption>
+              <img src={lab3Part1Img} alt="lab 3, part 1"></img>
+              <figcaption>
+                Webpage created using Bootstraps and JQuery
+              </figcaption>
+            </figure>
+            <hr />
+            <p>
+              In the second part of thee lab, we simply looked at one of the
+              many online templates available. The template is available{" "}
+              <a
+                className="ext-link"
+                href="lab-ref/freelancer-template/index.html"
+                target="_blank"
+              >
+                here
+              </a>
+              .
+            </p>
+            <hr />
+            <figure className="report-figure">
+              <img src={lab3FinalImg} alt="freelancer template webpage"></img>
+              <figcaption>The freelancer template</figcaption>
             </figure>
           </>
         )}

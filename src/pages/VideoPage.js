@@ -6,8 +6,7 @@ const VideoPage = () => {
       <figure className="video-container">
         <video src={boatVideo} controls></video>
         <figcaption>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis
-          a lacus at venenatis.
+          A short animation of an origami boat, a classic design!
         </figcaption>
       </figure>
     </main>

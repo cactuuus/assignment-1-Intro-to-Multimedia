@@ -8,26 +8,26 @@ const Header = ({ theme, handleTheme }) => {
     <>
       <header>
         <div className="container">
-          <Link to="/">
-            <h1>
-              <img src={logoImg} alt="Website logo" height={"40px"} />
+          <h1>
+            <Link to="/">
+              <img id="logo" src={logoImg} alt="Website logo" />
               My website
-            </h1>
-          </Link>
+            </Link>
+          </h1>
           <nav>
-            <NavLink to="/" className="link">
+            <NavLink to="/" className="link clickable">
               Home
             </NavLink>
-            <NavLink to="/video" className="link">
+            <NavLink to="/video" className="link clickable">
               Video
             </NavLink>
-            <NavLink to="/hobbies" className="link">
+            <NavLink to="/hobbies" className="link clickable">
               Hobbies
             </NavLink>
-            <NavLink to="/coursework" className="link">
+            <NavLink to="/coursework" className="link clickable">
               Coursework
             </NavLink>
-            <NavLink to="/clock" className="link">
+            <NavLink to="/clock" className="link clickable">
               Clock
             </NavLink>
             <ThemeSwitch theme={theme} handleTheme={handleTheme} />
