@@ -25,6 +25,7 @@ Custom properties
 
 :root {
   --theme-icons: rgb(252, 224, 70);
+
   --current-page: rgba(240, 128, 128, 0.863);
   --hover-link: lightcoral;
   --hover-link-shadow: coral;
@@ -44,24 +45,41 @@ Global
   color: var(--text);
 }
 
-body {
+#root {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  min-height: 100vh;
   background-color: var(--primary);
-  color: var(--text);
+}
+
+main {
+  flex-grow: 1;
+}
+
+:where(main, .container) {
+  width: 95%;
+  min-width: 750px;
+  max-width: 1300px;
+  margin: auto;
 }
 
 :where(h2, h3, h4) {
   margin-bottom: 10px;
 }
 
-.ext-link {
-  font-weight: bold;
-  text-decoration: underline;
+hr {
+  margin: 25px 0;
 }
 
-.clickable:hover {
-  background-color: var(--hover-link);
-  box-shadow: 0 0 10px var(--hover-link-shadow);
-  cursor: pointer;
+figcaption {
+  font-style: italic;
+  text-align: center;
+}
+
+.ext-link {
+  font-weight: bold;
+  color: var(--hover-link);
 }
 
 .clickable {
@@ -72,35 +90,10 @@ body {
   background-color: var(--current-page);
 }
 
-hr {
-  margin: 40px 0;
-}
-
-figcaption {
-  font-style: italic;
-  text-align: center;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-:where(main, .container) {
-  width: 90%;
-  min-width: 750px;
-  max-width: 1300px;
-  margin: auto;
-}
-
-main {
-  box-sizing: border-box;
-  padding: 40px 0;
-  min-height: 650px;
-  max-height: calc(100vh - var(--header-height) - var(--footer-height));
-  flex: 1;
-  overflow-y: scroll;
+.clickable:hover {
+  background-color: var(--hover-link);
+  box-shadow: 0 0 10px var(--hover-link);
+  cursor: pointer;
 }
 
 :where(.origami, .arrow) {
@@ -112,17 +105,22 @@ Header
 ===================================================================== */
 
 #logo {
-  height: 40px;
+  height: 35px;
 }
 
-h1 {
-  padding: 20px 0 0 0;
-  text-align: center;
+#title {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  column-gap: 10px;
+  padding-top: 10px;
   filter: drop-shadow(0px 0px 4px var(--shadow));
 }
 
 header {
-  min-height: var(--header-height);
+  position: sticky;
+  top: 0;
+  z-index: 5;
   background-color: var(--secondary);
   box-shadow: 0 0 3px var(--shadow);
 }
@@ -131,12 +129,10 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 10px;
-  border-radius: 10px;
-  margin-top: 20px;
+  padding: 5px 0;
 }
 
-.link {
+nav .link {
   padding: 5px 25px;
   border-radius: 5px;
 }
@@ -148,8 +144,6 @@ Theme toggle switch
   --width: 50px;
   --height: 22px;
   --border-rad: 50px;
-  margin-right: 5px;
-  float: right;
 }
 
 #theme-toggle .slider {
@@ -205,16 +199,21 @@ Footer
 footer {
   background-color: var(--secondary);
   box-shadow: 0 0 3px var(--shadow);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 #credits {
   min-height: var(--footer-height);
   display: flex;
-  column-gap: 10px;
   justify-content: center;
+  column-gap: 10px;
   flex-wrap: wrap;
   align-items: center;
+}
+
+#credits a {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 /* =====================================================================
@@ -246,7 +245,6 @@ Home
   scale: 1;
   translate: 0;
   transition: scale 0.3s ease, translate 0.2s;
-  z-index: 2;
   padding: 30px 40px;
   margin: -10px -10px;
 }
@@ -327,32 +325,29 @@ Coursework page
 ===================================================================== */
 
 #coursework-container {
-  --min-height: 400px;
   --box-padding: 10px;
   --box-radius: 10px;
-  display: flex;
-  justify-content: space-between;
 }
 
 #coursework-container aside {
+  position: fixed;
   min-width: 230px;
-  width: 25%;
+  width: 20%;
   border-radius: var(--box-radius);
   padding: var(--box-padding);
   background-color: var(--ternary);
-  min-height: var(--min-height);
   box-shadow: 0 0 3px var(--shadow);
 }
 
 .coursework-links {
-  padding: 5px 0;
+  padding: 5px 0 20px;
   list-style: none;
   border-top: 1px solid var(--text);
 }
 
 .coursework-link {
   display: block;
-  padding: 5px 20px;
+  padding: 5px 0;
   margin: 5px 0;
   transition: padding 0.2s;
   border-radius: 5px;
@@ -371,12 +366,19 @@ Coursework page
 }
 
 .report {
-  padding: var(--box-padding) 20px;
-  width: 65%;
-  overflow-y: scroll;
+  float: right;
+  padding: var(--box-padding) 0;
+  width: 70%;
+}
+
+@media screen and (max-width: 950px) {
+  .report {
+    width: 65%;
+  }
 }
 
 .report-figure {
+  width: 70%;
   max-width: 500px;
   margin: auto;
 }
@@ -395,17 +397,13 @@ Coursework page
 .arrow {
   fill: var(--secondary);
   stroke: var(--secondary);
-  height: 50px;
+  height: 40px;
   margin: 0 30px;
 }
 
 /* =====================================================================
 Hobbies page
 ===================================================================== */
-
-.hobbies {
-  margin: 0 30px;
-}
 
 .hobbies-section {
   display: flex;

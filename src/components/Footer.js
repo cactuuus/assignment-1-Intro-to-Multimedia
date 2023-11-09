@@ -4,12 +4,7 @@ const Footer = () => {
       <div className="container" id="credits">
         <small>
           Origami boat video from -{" "}
-          <a
-            className="ext-link"
-            href="http://www.videezy.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="http://www.videezy.com/" target="_blank" rel="noreferrer">
             Videezy
           </a>
         </small>
@@ -17,7 +12,6 @@ const Footer = () => {
         <small>
           Origami logo from -{" "}
           <a
-            className="ext-link"
             href="https://www.flaticon.com/free-icons/origami"
             target="_blank"
             title="origami icons"
@@ -30,7 +24,6 @@ const Footer = () => {
         <small>
           Sound Effect from -{" "}
           <a
-            className="ext-link"
             href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=27477"
             target="_blank"
             rel="noreferrer"
@@ -41,12 +34,7 @@ const Footer = () => {
         |
         <small>
           Origami images from -{" "}
-          <a
-            className="ext-link"
-            href="www.stickpng.com"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="www.stickpng.com" target="_blank" rel="noreferrer">
             Stickpng
           </a>
         </small>

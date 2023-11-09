@@ -7,7 +7,7 @@ import lab3FinalImg from "../media/images/coursework/lab-3-final.jpg";
 const CourseworkPage = () => {
   const [currentReport, setCurrentReport] = useState("");
 
-  const reports = ["Lab 2 - HTML & CSS", "Lab 3 - Bootstrap & Js"];
+  const reports = ["HTML & CSS", "Bootstrap & JavaScript"];
 
   const handleReport = (e) => {
     const target = e.target.getAttribute("value");
@@ -18,7 +18,7 @@ const CourseworkPage = () => {
   return (
     <main id="coursework-container">
       <aside>
-        <h3>Lab links</h3>
+        <h3>Lab work</h3>
         <ul className="coursework-links">
           {reports.map((reportName) => {
             return (
@@ -61,7 +61,7 @@ const CourseworkPage = () => {
 
         {currentReport === reports[0] && (
           <>
-            <h3>HTML & CSS</h3>
+            <h3>{reports[0]}</h3>
             <p>
               In this lab we learned about HTML and CSS. We mostly focused on
               styling &lt;div&gt; to produce a static webpage template, styling
@@ -83,7 +83,7 @@ const CourseworkPage = () => {
 
         {currentReport === reports[1] && (
           <>
-            <h3>Bootstrap</h3>
+            <h3>{reports[1]}</h3>
             <p>
               This lab focused on the use of libraries: Bootstrap and JQuery.
               With them, we first created a simple webpage (available{" "}

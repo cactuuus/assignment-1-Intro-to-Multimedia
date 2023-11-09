@@ -8,12 +8,10 @@ const Header = ({ theme, handleTheme }) => {
     <>
       <header>
         <div className="container">
-          <h1>
-            <Link to="/">
-              <img id="logo" src={logoImg} alt="Website logo" />
-              My website
-            </Link>
-          </h1>
+          <Link to="/" id="title">
+            <img id="logo" src={logoImg} alt="Website logo" />
+            <h1>Intro to Multimedia</h1>
+          </Link>
           <nav>
             <NavLink to="/" className="link clickable">
               Home
